@@ -62,3 +62,7 @@ main {
   max-width: 1440px !important;
   background-color: aqua;
 }
+
+.pokemonCard {
+  width: 300px !important;
+}
