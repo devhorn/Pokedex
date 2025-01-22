@@ -1,14 +1,15 @@
-BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=25&offset=0";
+BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=24&offset=0";
 let loadedPokemons = [];
 let pokemonData = [];
 
 async function init() {
   await loadPokemons();
   await getPokemondata();
+  renderPokemons();
 }
 
 async function loadPokemons() {
-  pokemonContentRef = document.getElementById("pokemenContent");
+  let pokemonContentRef = document.getElementById("pokemenContent");
   try {
     let response = await fetch(BASE_URL);
     let responseAsJson = await response.json();
@@ -20,6 +21,7 @@ async function loadPokemons() {
 }
 
 async function getPokemondata() {
+  let pokemonContentRef = document.getElementById("pokemenContent");
   for (let i = 0; i < loadedPokemons.length; i++) {
     try {
       let response = await fetch(loadedPokemons[i].url);
@@ -30,4 +32,11 @@ async function getPokemondata() {
     }
   }
   console.log(pokemonData);
+}
+
+function renderPokemons() {
+  let pokemonContentRef = document.getElementById("pokemenContent");
+  for (let pokeIndex = 0; pokeIndex < pokemonData.length; pokeIndex++) {
+    pokemonContentRef.innerHTML += getPokemonCardTemplate(pokeIndex);
+  }
 }
