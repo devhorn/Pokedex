@@ -1,0 +1,13 @@
+.pokemonCard {
+  width: 300px !important;
+  cursor: pointer;
+}
+
+.pokemonImg {
+  width: 200px;
+}
+
+.cardHead h5 {
+  font-weight: 600;
+  color: rgb(88, 88, 88);
+}

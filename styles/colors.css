@@ -1,0 +1,43 @@
+:root {
+  --header-bg-color: #082129;
+  --da-red: #f15e51;
+  --main-bg-color: #05171e;
+  --book-bg-color: #0d3240;
+  --text-color: #edf3f8;
+  --divider-color: #417c92;
+  --water: #90e0ef;
+  --fire: #f25c54;
+  --grass: #b2ff9e;
+  --poison: #cbb2fe;
+  --electric: #eeefa8;
+  --bug: #ddb892;
+  --normal: #ced4da;
+}
+
+.fire {
+  background-color: var(--fire);
+}
+
+.water {
+  background-color: var(--water);
+}
+
+.grass {
+  background-color: var(--grass);
+}
+
+.poison {
+  background-color: var(--poison);
+}
+
+.electric {
+  background-color: var(--electric);
+}
+
+.bug {
+  background-color: var(--bug);
+}
+
+.normal {
+  background-color: var(--normal);
+}
