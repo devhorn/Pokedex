@@ -6,6 +6,10 @@
   font-family: "Roboto", serif;
 }
 
+.dNone {
+  display: none !important;
+}
+
 .content {
   min-height: 100vh;
   background-color: blue;

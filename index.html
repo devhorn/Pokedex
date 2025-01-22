@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="./styles/pokemonCard.css" />
     <link rel="stylesheet" href="./styles/colors.css" />
+    <link rel="stylesheet" href="./styles/loadingOverlay.css" />
     <script src="./scripts/db.js"></script>
     <script src="./scripts/template.js"></script>
     <script src="script.js"></script>
@@ -51,9 +52,18 @@
           class="container d-flex flex-wrap justify-content-center gap-3 pt-5 pb-2 pokemonContent"
         ></div>
         <div id="loadPokemon" class="container d-flex justify-content-center">
-          <button onclick="loadMorePokemons()">Mehr Pokemon laden</button>
+          <button
+            type="button"
+            class="btn btn-outline-light btn-lg m-5"
+            onclick="loadMorePokemons()"
+          >
+            Mehr Pokemon laden
+          </button>
         </div>
       </main>
+      <div id="loadingOverlay" class="loadingOverlay dNone">
+        <p>test</p>
+      </div>
     </div>
   </body>
 </html>
