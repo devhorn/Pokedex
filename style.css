@@ -1,0 +1,64 @@
+:root {
+  --header-bg-color: #082129;
+  --da-red: #f15e51;
+  --main-bg-color: #05171e;
+  --book-bg-color: #0d3240;
+  --text-color: #edf3f8;
+  --divider-color: #417c92;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-orange);
+  border-radius: 5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Roboto", serif;
+}
+
+.content {
+  min-height: 100vh;
+  background-color: blue;
+}
+
+header {
+  height: 100px;
+  background-color: var(--header-bg-color);
+}
+
+.headerContent {
+  width: 100%;
+  max-width: 1440px !important;
+  padding: 0 !important;
+}
+
+.pokeballImg {
+  height: 40px;
+}
+
+h1 {
+  color: white;
+  margin-bottom: 0 !important;
+}
+
+main {
+  min-height: 100vh;
+  background-color: var(--main-bg-color);
+}
+
+.pokemonContent {
+  max-width: 1440px !important;
+  background-color: aqua;
+}
