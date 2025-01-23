@@ -14,10 +14,12 @@ function getPokemonCardTemplate(pokeIndex, dataArray) {
                 )}</h5>
                 <h5 class="card-title">#${dataArray[pokeIndex].id}</h5>
             </div>
-            <img src="${
-              dataArray[pokeIndex].sprites.other.home.front_default
-            }" class="card-img-top"/>
-            <div id="typeContent${pokeIndex}" class="card-body d-flex gap-3 justify-content-center"></div>
+            <div class="pokemonImg d-flex justify-content-center">
+              <img src="${
+                dataArray[pokeIndex].sprites.other.home.front_default
+              }" />
+            </div>
+            <div id="typeContent${pokeIndex}" class="card-body d-flex gap-3 justify-content-center cardBody"></div>
           </div>`;
 }
 

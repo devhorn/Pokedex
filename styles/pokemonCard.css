@@ -3,14 +3,18 @@
   cursor: pointer;
 }
 
-.pokemonImg {
-  width: 200px;
+.pokemonImg img {
+  width: 250px !important;
 }
 
 .cardHead h5 {
   font-weight: 600;
   color: var(--cardText);
   font-size: 24px;
+}
+
+.cardBody {
+  height: 80px !important;
 }
 
 .type {
