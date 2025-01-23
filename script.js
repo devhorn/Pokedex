@@ -1,6 +1,7 @@
 BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=1302&offset=0";
-let amountOfRendertPokemons = 20;
-let amountOfLoad = 20;
+let amountOfRendertPokemons = 5;
+let amountOfLoad = 5;
+let contentWilltoggled = true;
 let loadedPokemons = [];
 let pokemonData = [];
 let searchedPokemonData = [];
@@ -74,17 +75,23 @@ function renderMorePokemons() {
   }
 }
 
-function searchPokemons() {
+function showInputWarning() {
+  document.getElementById("warning").innerHTML =
+    "Mindestens 3 Buchstaben eingeben...";
+}
+
+async function searchPokemons() {
   searchInputRef = document.getElementById("search");
   searchInput = searchInputRef.value;
   if (searchInput.length < 3) {
-    document.getElementById("warning").innerHTML =
-      "Mindestens 3 Buchstaben eingeben...";
+    showInputWarning();
     return;
   }
   document.getElementById("warning").innerHTML = "";
   searchResultArr = getSearchedPokemons(searchInput);
-  searchResultArrData = getSearchedPokemonData(searchResultArr);
+  await getSearchedPokemonData(searchResultArr);
+  renderSearchedPokemons();
+  contentWilltoggled = false;
 }
 
 function getSearchedPokemons(searchInput) {
@@ -105,11 +112,31 @@ async function getSearchedPokemonData(searchedPokemonArr) {
       let responseAsJson = await response.json();
       searchedPokemonData.push(responseAsJson);
     } catch (error) {
-      searchInputRef = document.getElementById("search");
       document.getElementById("warning").innerHTML =
         "Fehler beim Laden der Daten...";
     }
   }
 }
 
-function renderSearchedPokemons() {}
+function renderSearchedPokemons() {
+  let searchedContentRef = document.getElementById("searchedPokemonContent");
+  if (contentWilltoggled) {
+    toggleContent();
+  }
+  console.log(searchedPokemonData);
+  searchedContentRef.innerHTML = "";
+  for (let pokeIndex = 0; pokeIndex < searchedPokemonData.length; pokeIndex++) {
+    searchedContentRef.innerHTML += getSearchedPokemonCardTemplate(pokeIndex);
+  }
+}
+
+function clearSearchWarningMessage(id) {
+  document.getElementById(id).innerHTML = "";
+}
+
+function toggleContent() {
+  document.getElementById("pokemenContent").innerHTML = "";
+  document.getElementById("loadMoreButton").innerHTML = "";
+  document.getElementById("backButton").classList.toggle("dNone");
+  document.getElementById("searchedPokemonContent").classList.toggle("dNone");
+}

@@ -24,6 +24,28 @@ function getPokemonCardTemplate(pokeIndex) {
           </div>`;
 }
 
+function getSearchedPokemonCardTemplate(pokeIndex) {
+  return `<div class="card pokemonCard ${
+    searchedPokemonData[pokeIndex].types[0].type.name
+  }">
+            <div class="d-flex justify-content-between p-3 cardHead">
+                <h5 class="card-title">${fristLetterUpperCase(
+                  searchedPokemonData[pokeIndex].name
+                )}</h5>
+                <h5 class="card-title">#${
+                  searchedPokemonData[pokeIndex].id
+                }</h5>
+            </div>
+            <img src="${
+              searchedPokemonData[pokeIndex].sprites.other.home.front_default
+            }" class="card-img-top"/>
+            <div class="card-body">
+              
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>`;
+}
+
 function fristLetterUpperCase(word) {
   let firstLetter = word[0];
   let firstLetterCap = firstLetter.toUpperCase();

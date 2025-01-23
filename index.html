@@ -45,6 +45,7 @@
           <div class="d-flex flex-column gap-2 searchInput">
             <input
               oninput="searchPokemons()"
+              onfocusout="clearSearchWarningMessage('warning')"
               id="search"
               type="text"
               placeholder="Pokemon suchen..."
@@ -56,11 +57,21 @@
         </div>
       </header>
       <main>
+        <div id="backButton" class="d-flex justify-content-center dNone">
+          <button class="btn btn-outline-light btn-lg mt-5">zurück</button>
+        </div>
+        <div
+          id="searchedPokemonContent"
+          class="container d-flex flex-wrap justify-content-center gap-3 pt-5 pb-2 pokemonContent dNone"
+        ></div>
         <div
           id="pokemenContent"
           class="container d-flex flex-wrap justify-content-center gap-3 pt-5 pb-2 pokemonContent"
         ></div>
-        <div id="loadPokemon" class="container d-flex justify-content-center">
+        <div
+          id="loadMoreButton"
+          class="container d-flex justify-content-center"
+        >
           <button
             type="button"
             class="btn btn-outline-light btn-lg m-5"
