@@ -13,7 +13,7 @@ async function init() {
 }
 
 async function initialLoadPokemons() {
-  let pokemonContentRef = document.getElementById("pokemenContent");
+  let pokemonContentRef = document.getElementById("pokemonContent");
   try {
     let response = await fetch(BASE_URL);
     let responseAsJson = await response.json();
@@ -24,7 +24,7 @@ async function initialLoadPokemons() {
 }
 
 async function getInitialPokemonData() {
-  let pokemonContentRef = document.getElementById("pokemenContent");
+  let pokemonContentRef = document.getElementById("pokemonContent");
   for (let i = 0; i < amountOfRendertPokemons; i++) {
     try {
       let response = await fetch(loadedPokemons[i].url);
@@ -37,7 +37,7 @@ async function getInitialPokemonData() {
 }
 
 function initialRenderingOfPokemons() {
-  let pokemonContentRef = document.getElementById("pokemenContent");
+  let pokemonContentRef = document.getElementById("pokemonContent");
   for (let pokeIndex = 0; pokeIndex < pokemonData.length; pokeIndex++) {
     pokemonContentRef.innerHTML += getPokemonCardTemplate(
       pokeIndex,
@@ -54,7 +54,7 @@ async function loadMorePokemons() {
 
 async function getMorePokemonData() {
   let currentIndex = amountOfRendertPokemons;
-  let pokemonContentRef = document.getElementById("pokemenContent");
+  let pokemonContentRef = document.getElementById("pokemonContent");
   for (let i = currentIndex; i < amountOfRendertPokemons + amountOfLoad; i++) {
     try {
       let response = await fetch(loadedPokemons[i].url);
@@ -68,7 +68,7 @@ async function getMorePokemonData() {
 
 function renderMorePokemons() {
   let startIndex = amountOfRendertPokemons;
-  let pokemonContentRef = document.getElementById("pokemenContent");
+  let pokemonContentRef = document.getElementById("pokemonContent");
   for (
     let pokeIndex = startIndex;
     pokeIndex < pokemonData.length;
@@ -146,8 +146,17 @@ function clearSearchWarningMessage() {
 }
 
 function toggleContent() {
-  document.getElementById("pokemenContent").innerHTML = "";
-  document.getElementById("loadMoreButton").innerHTML = "";
+  document.getElementById("pokemonContent").innerHTML = "";
+  document.getElementById("loadMoreButton").classList.toggle("dNone");
   document.getElementById("backButton").classList.toggle("dNone");
   document.getElementById("searchedPokemonContent").classList.toggle("dNone");
+}
+
+function backToOverview() {
+  document.getElementById("searchedPokemonContent").innerHTML = "";
+  document.getElementById("backButton").classList.toggle("dNone");
+  document.getElementById("searchedPokemonContent").classList.toggle("dNone");
+  document.getElementById("loadMoreButton").classList.toggle("dNone");
+  toggleSearchContent = true;
+  initialRenderingOfPokemons();
 }

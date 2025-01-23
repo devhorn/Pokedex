@@ -58,14 +58,19 @@
       </header>
       <main>
         <div id="backButton" class="d-flex justify-content-center dNone">
-          <button class="btn btn-outline-light btn-lg mt-5">zurück</button>
+          <button
+            onclick="backToOverview()"
+            class="btn btn-outline-light btn-lg mt-5"
+          >
+            zurück zur Übersicht
+          </button>
         </div>
         <div
           id="searchedPokemonContent"
           class="container d-flex flex-wrap justify-content-center gap-3 pt-5 pb-2 pokemonContent dNone"
         ></div>
         <div
-          id="pokemenContent"
+          id="pokemonContent"
           class="container d-flex flex-wrap justify-content-center gap-3 pt-5 pb-2 pokemonContent"
         ></div>
         <div
