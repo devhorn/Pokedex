@@ -5,26 +5,67 @@ function getLoadDataErrorMessage(error) {
 }
 
 function getPokemonCardTemplate(pokeIndex, dataArray) {
-  return `<div class="card pokemonCard ${
+  return `  <div onclick="openDialog(${pokeIndex})" class="card pokemonCard ${
     dataArray[pokeIndex].types[0].type.name
   }">
-            <div class="d-flex justify-content-between p-3 cardHead">
+              <div class="d-flex justify-content-between p-3 cardHead">
                 <h5 class="card-title">${fristLetterUpperCase(
                   dataArray[pokeIndex].name
                 )}</h5>
                 <h5 class="card-title">#${dataArray[pokeIndex].id}</h5>
-            </div>
-            <div class="pokemonImg d-flex justify-content-center">
-              <img src="${
-                dataArray[pokeIndex].sprites.other.home.front_default
-              }" />
-            </div>
-            <div id="typeContent${pokeIndex}" class="card-body d-flex gap-3 justify-content-center cardBody"></div>
+              </div>
+              <div class="pokemonImg d-flex justify-content-center">
+                <img src="${
+                  dataArray[pokeIndex].sprites.other.home.front_default
+                }" />
+              </div>
+              <div id="typeContent${pokeIndex}" class="card-body d-flex gap-3 justify-content-center cardBody"></div>
           </div>`;
 }
 
 function getTypeTemplate(typeName) {
   return `<div class="type">${typeName}</div>`;
+}
+
+function getDetailCardTemplate(pokeIndex, dataArray) {
+  return `<div onclick="stayOpen(event)" class="pokemonDetailCard ${
+    dataArray[pokeIndex].types[0].type.name
+  }">
+          <div class="detailCardHalfOne">
+            <div class="detailCardHead">
+              <h5>${fristLetterUpperCase(dataArray[pokeIndex].name)}</h5>
+            </div>
+            <div class="detailCardImg">
+              <img src="${
+                dataArray[pokeIndex].sprites.other.home.front_default
+              }"/>
+            </div>
+          </div>
+          <div class="detailCardHalfTwo">
+            <div class="detailCardButtons">
+              <div class="button main">main</div>
+              <div class="button stats">stats</div>
+              <div class="button evoChain">evoChain</div>
+            </div>
+            <div class="detailCardContent">
+              <div class="mainInfoCard">
+                <div class="mainInfo">
+                  <p>Height:</p>
+                  <p>Weight:</p>
+                  <p>Base experience:</p>
+                  <p>Abilities:</p>
+                </div>
+                <div class="mainInfoValues">
+                  <p>0,6 m</p>
+                  <p>8,5 kg</p>
+                  <p>62</p>
+                  <p>blaze, solarpower</p>
+                </div>
+              </div>
+            </div>
+            <div class="arrowButtons"></div>
+          </div>
+        </div>`;
 }
 
 function fristLetterUpperCase(word) {

@@ -32,7 +32,7 @@
     />
   </head>
   <body onload="init()">
-    <div class="content">
+    <div id="content" class="content">
       <header class="d-flex align-items-center">
         <div
           class="container d-flex align-items-center justify-content-between headerContent"
@@ -90,45 +90,11 @@
           </button>
         </div>
       </main>
-      <div class="dialogcontainer">
-        <div class="pokemonDetailCard grass">
-          <div class="detailCardHalfOne">
-            <div class="detailCardHead">
-              <h5>Pokemonname</h5>
-            </div>
-            <div class="detailCardImg">
-              <img src="./assets/icons/pokeball_colored.png" alt="" />
-            </div>
-            <div class="detailCardType">
-              <div class="type">type</div>
-            </div>
-          </div>
-          <div class="detailCardHalfTwo">
-            <div class="detailCardButtons">
-              <div class="button main">main</div>
-              <div class="button stats">stats</div>
-              <div class="button evoChain">evoChain</div>
-            </div>
-            <div class="detailCardContent">
-              <div class="mainInfoCard">
-                <div class="mainInfo">
-                  <p>Height:</p>
-                  <p>Weight:</p>
-                  <p>Base experience:</p>
-                  <p>Abilities:</p>
-                </div>
-                <div class="mainInfoValues">
-                  <p>0,6 m</p>
-                  <p>8,5 kg</p>
-                  <p>62</p>
-                  <p>blaze, solarpower</p>
-                </div>
-              </div>
-            </div>
-            <div class="arrowButtons"></div>
-          </div>
-        </div>
-      </div>
+      <div
+        onclick="closeDialog(event)"
+        id="dialogContainer"
+        class="dialogcontainer dNone"
+      ></div>
       <div id="loadingOverlay" class="loadingOverlay dNone">
         <p>test</p>
       </div>

@@ -16,6 +16,7 @@
   height: 780px;
   width: 420px;
   border-radius: 20px;
+  border: 1px solid lightgrey;
 }
 
 .detailCardHead {
@@ -23,8 +24,14 @@
   padding-top: 16px;
 }
 
+.detailCardHead h5 {
+  font-weight: 600;
+  color: var(--cardText);
+  font-size: 28px;
+}
+
 .detailCardImg img {
-  width: 120px;
+  width: 300px;
 }
 
 .detailCardType {
