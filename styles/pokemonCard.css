@@ -3,8 +3,16 @@
   cursor: pointer;
 }
 
+.pokemonCard:hover {
+  filter: drop-shadow(0 0 20px rgb(248, 246, 246));
+}
+
 .pokemonImg img {
   width: 250px !important;
+}
+
+.pokemonImg img:hover {
+  filter: drop-shadow(0 0 50px rgb(248, 246, 246));
 }
 
 .cardHead h5 {
