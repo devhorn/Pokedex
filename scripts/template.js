@@ -4,40 +4,18 @@ function getLoadDataErrorMessage(error) {
             </div>`;
 }
 
-function getPokemonCardTemplate(pokeIndex) {
+function getPokemonCardTemplate(pokeIndex, dataArray) {
   return `<div class="card pokemonCard ${
-    pokemonData[pokeIndex].types[0].type.name
+    dataArray[pokeIndex].types[0].type.name
   }">
             <div class="d-flex justify-content-between p-3 cardHead">
                 <h5 class="card-title">${fristLetterUpperCase(
-                  pokemonData[pokeIndex].name
+                  dataArray[pokeIndex].name
                 )}</h5>
-                <h5 class="card-title">#${pokemonData[pokeIndex].id}</h5>
+                <h5 class="card-title">#${dataArray[pokeIndex].id}</h5>
             </div>
             <img src="${
-              pokemonData[pokeIndex].sprites.other.home.front_default
-            }" class="card-img-top"/>
-            <div class="card-body">
-              
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>`;
-}
-
-function getSearchedPokemonCardTemplate(pokeIndex) {
-  return `<div class="card pokemonCard ${
-    searchedPokemonData[pokeIndex].types[0].type.name
-  }">
-            <div class="d-flex justify-content-between p-3 cardHead">
-                <h5 class="card-title">${fristLetterUpperCase(
-                  searchedPokemonData[pokeIndex].name
-                )}</h5>
-                <h5 class="card-title">#${
-                  searchedPokemonData[pokeIndex].id
-                }</h5>
-            </div>
-            <img src="${
-              searchedPokemonData[pokeIndex].sprites.other.home.front_default
+              dataArray[pokeIndex].sprites.other.home.front_default
             }" class="card-img-top"/>
             <div class="card-body">
               

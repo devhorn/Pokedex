@@ -1,7 +1,7 @@
 BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=1302&offset=0";
-let amountOfRendertPokemons = 5;
-let amountOfLoad = 5;
-let contentWilltoggled = true;
+let amountOfRendertPokemons = 8;
+let amountOfLoad = 8;
+let toggleSearchContent = true;
 let loadedPokemons = [];
 let pokemonData = [];
 let searchedPokemonData = [];
@@ -39,7 +39,10 @@ async function getInitialPokemonData() {
 function initialRenderingOfPokemons() {
   let pokemonContentRef = document.getElementById("pokemenContent");
   for (let pokeIndex = 0; pokeIndex < pokemonData.length; pokeIndex++) {
-    pokemonContentRef.innerHTML += getPokemonCardTemplate(pokeIndex);
+    pokemonContentRef.innerHTML += getPokemonCardTemplate(
+      pokeIndex,
+      pokemonData
+    );
   }
 }
 
@@ -71,7 +74,10 @@ function renderMorePokemons() {
     pokeIndex < pokemonData.length;
     pokeIndex++
   ) {
-    pokemonContentRef.innerHTML += getPokemonCardTemplate(pokeIndex);
+    pokemonContentRef.innerHTML += getPokemonCardTemplate(
+      pokeIndex,
+      pokemonData
+    );
   }
 }
 
@@ -91,7 +97,7 @@ async function searchPokemons() {
   searchResultArr = getSearchedPokemons(searchInput);
   await getSearchedPokemonData(searchResultArr);
   renderSearchedPokemons();
-  contentWilltoggled = false;
+  toggleSearchContent = false;
 }
 
 function getSearchedPokemons(searchInput) {
@@ -120,18 +126,23 @@ async function getSearchedPokemonData(searchedPokemonArr) {
 
 function renderSearchedPokemons() {
   let searchedContentRef = document.getElementById("searchedPokemonContent");
-  if (contentWilltoggled) {
+  if (toggleSearchContent) {
     toggleContent();
   }
   console.log(searchedPokemonData);
   searchedContentRef.innerHTML = "";
   for (let pokeIndex = 0; pokeIndex < searchedPokemonData.length; pokeIndex++) {
-    searchedContentRef.innerHTML += getSearchedPokemonCardTemplate(pokeIndex);
+    searchedContentRef.innerHTML += getPokemonCardTemplate(
+      pokeIndex,
+      searchedPokemonData
+    );
   }
 }
 
-function clearSearchWarningMessage(id) {
-  document.getElementById(id).innerHTML = "";
+function clearSearchWarningMessage() {
+  document.getElementById("warning").innerHTML = "";
+  let searchInputRef = document.getElementById("search");
+  searchInputRef.value = "";
 }
 
 function toggleContent() {
