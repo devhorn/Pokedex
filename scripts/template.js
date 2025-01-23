@@ -17,11 +17,12 @@ function getPokemonCardTemplate(pokeIndex, dataArray) {
             <img src="${
               dataArray[pokeIndex].sprites.other.home.front_default
             }" class="card-img-top"/>
-            <div class="card-body">
-              
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+            <div id="typeContent${pokeIndex}" class="card-body d-flex gap-3 justify-content-center"></div>
           </div>`;
+}
+
+function getTypeTemplate(typeName) {
+  return `<div class="type">${typeName}</div>`;
 }
 
 function fristLetterUpperCase(word) {

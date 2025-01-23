@@ -10,6 +10,7 @@ async function init() {
   await initialLoadPokemons();
   await getInitialPokemonData();
   initialRenderingOfPokemons();
+  renderTypes();
 }
 
 async function initialLoadPokemons() {
@@ -49,6 +50,7 @@ function initialRenderingOfPokemons() {
 async function loadMorePokemons() {
   await getMorePokemonData();
   renderMorePokemons();
+  renderMoreTypes();
   amountOfRendertPokemons += amountOfLoad;
 }
 
@@ -78,6 +80,21 @@ function renderMorePokemons() {
       pokeIndex,
       pokemonData
     );
+  }
+}
+
+function renderMoreTypes() {
+  let startIndex = amountOfRendertPokemons;
+  for (
+    let pokeIndex = startIndex;
+    pokeIndex < pokemonData.length;
+    pokeIndex++
+  ) {
+    let typeContentRef = document.getElementById(`typeContent${pokeIndex}`);
+    for (let i = 0; i < pokemonData[pokeIndex].types.length; i++) {
+      let typeName = pokemonData[pokeIndex].types[i].type.name;
+      typeContentRef.innerHTML += getTypeTemplate(typeName);
+    }
   }
 }
 
@@ -137,6 +154,17 @@ function renderSearchedPokemons() {
       searchedPokemonData
     );
   }
+  renderSearchedTypes();
+}
+
+function renderSearchedTypes() {
+  for (let pokeIndex = 0; pokeIndex < searchedPokemonData.length; pokeIndex++) {
+    let typeContentRef = document.getElementById(`typeContent${pokeIndex}`);
+    for (let i = 0; i < searchedPokemonData[pokeIndex].types.length; i++) {
+      let typeName = searchedPokemonData[pokeIndex].types[i].type.name;
+      typeContentRef.innerHTML += getTypeTemplate(typeName);
+    }
+  }
 }
 
 function clearSearchWarningMessage() {
@@ -159,4 +187,15 @@ function backToOverview() {
   document.getElementById("loadMoreButton").classList.toggle("dNone");
   toggleSearchContent = true;
   initialRenderingOfPokemons();
+  renderTypes();
+}
+
+function renderTypes() {
+  for (let pokeIndex = 0; pokeIndex < pokemonData.length; pokeIndex++) {
+    let typeContentRef = document.getElementById(`typeContent${pokeIndex}`);
+    for (let i = 0; i < pokemonData[pokeIndex].types.length; i++) {
+      let typeName = pokemonData[pokeIndex].types[i].type.name;
+      typeContentRef.innerHTML += getTypeTemplate(typeName);
+    }
+  }
 }
