@@ -42,8 +42,17 @@
             />
             <h1>Pokedex</h1>
           </div>
-
-          <input type="text" placeholder="Pokemon suchen..." />
+          <div class="d-flex flex-column gap-2 searchInput">
+            <input
+              oninput="searchPokemons()"
+              id="search"
+              type="text"
+              placeholder="Pokemon suchen..."
+            />
+            <div>
+              <p id="warning"></p>
+            </div>
+          </div>
         </div>
       </header>
       <main>

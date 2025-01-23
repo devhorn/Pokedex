@@ -34,6 +34,15 @@ h1 {
   color: white;
   margin-bottom: 0 !important;
 }
+.searchInput {
+  height: 100% !important;
+  width: 300px;
+}
+
+#warning {
+  color: #ef233c;
+  margin-bottom: 0 !important;
+}
 
 main {
   min-height: 100vh;
