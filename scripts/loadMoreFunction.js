@@ -29,7 +29,8 @@ function renderMorePokemons() {
   ) {
     pokemonContentRef.innerHTML += getPokemonCardTemplate(
       pokeIndex,
-      pokemonData
+      pokemonData,
+      "p"
     );
   }
 }

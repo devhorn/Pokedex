@@ -54,7 +54,8 @@ function renderSearchedPokemons() {
   for (let pokeIndex = 0; pokeIndex < searchedPokemonData.length; pokeIndex++) {
     searchedContentRef.innerHTML += getPokemonCardTemplate(
       pokeIndex,
-      searchedPokemonData
+      searchedPokemonData,
+      "s"
     );
   }
   renderSearchedTypes();

@@ -41,7 +41,8 @@ function initialRenderingOfPokemons() {
   for (let pokeIndex = 0; pokeIndex < pokemonData.length; pokeIndex++) {
     pokemonContentRef.innerHTML += getPokemonCardTemplate(
       pokeIndex,
-      pokemonData
+      pokemonData,
+      "p"
     );
   }
 }

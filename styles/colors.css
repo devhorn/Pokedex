@@ -12,6 +12,7 @@
   --electric: #eeefa8;
   --bug: #ddb892;
   --normal: #ced4da;
+  --psychic: #cdb4db;
   --cardText: rgb(88, 88, 88);
 }
 
@@ -41,4 +42,8 @@
 
 .normal {
   background-color: var(--normal);
+}
+
+.psychic {
+  background-color: var(--psychic);
 }

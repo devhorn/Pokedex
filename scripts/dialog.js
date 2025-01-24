@@ -1,14 +1,25 @@
-function openDialog(pokeIndex) {
+function openDialog(pokeIndex, array) {
   let dialogContainerRef = document.getElementById("dialogContainer");
   dialogContainerRef.classList.toggle("dNone");
   document.getElementsByTagName("body")[0].style.overflow = "hidden";
-  renderDetailCard(pokeIndex);
+  let arrayToUse;
+  if (array === "p") {
+    arrayToUse = pokemonData;
+  } else if (array === "s") {
+    arrayToUse = searchedPokemonData;
+  }
+  renderDetailCard(pokeIndex, arrayToUse);
 }
 
-function renderDetailCard(pokeIndex) {
+function renderDetailCard(pokeIndex, pokemonData) {
   let dialogContainerRef = document.getElementById("dialogContainer");
   dialogContainerRef.innerHTML = getDetailCardTemplate(pokeIndex, pokemonData);
-  renderMainInfoOfCard(pokeIndex, "p");
+  intialRenderMainInfoOfCard(pokeIndex, pokemonData);
+}
+
+function intialRenderMainInfoOfCard(pokeIndex, array) {
+  let detailCardContentRef = document.getElementById("detailCardContent");
+  detailCardContentRef.innerHTML = getMainInfoTemplate(pokeIndex, array);
 }
 
 function renderMainInfoOfCard(pokeIndex, array) {
@@ -77,4 +88,9 @@ function getHeight(pokeIndex, dataArray) {
   height = height.replace(".", ",");
   height += " m";
   return height;
+}
+
+function renderStats() {
+  let detailCardContentRef = document.getElementById("detailCardContent");
+  detailCardContentRef.innerHTML = "";
 }
