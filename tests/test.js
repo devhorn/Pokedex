@@ -1,4 +1,4 @@
-let filteredNames = [];
+/* let filteredNames = [];
 
 function searchNames() {
   searchInputRef = document.getElementById("nameInput");
@@ -19,4 +19,12 @@ function searchNames() {
 
 let test = "bana-bana";
 
-console.log(test.includes("ana"));
+console.log(test.includes("ana")); */
+
+let test = "Hase,,";
+
+console.log(test);
+
+test = test.slice(0, -2);
+
+console.log(test);

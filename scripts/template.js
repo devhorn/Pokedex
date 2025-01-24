@@ -43,12 +43,18 @@ function getDetailCardTemplate(pokeIndex, dataArray) {
           </div>
           <div class="detailCardHalfTwo">
             <div class="detailCardButtons">
-              <div class="button main">main</div>
+              <div onclick="renderMainInfoOfCard(${pokeIndex}, 'p')" class="button main">main</div>
               <div class="button stats">stats</div>
               <div class="button evoChain">evoChain</div>
             </div>
-            <div class="detailCardContent">
-              <div class="mainInfoCard">
+            <div id="detailCardContent" class="detailCardContent"></div>
+            <div class="arrowButtons"></div>
+          </div>
+        </div>`;
+}
+
+function getMainInfoTemplate(pokeIndex, dataArray) {
+  return `  <div class="mainInfoCard">
                 <div class="mainInfo">
                   <p>Height:</p>
                   <p>Weight:</p>
@@ -56,16 +62,12 @@ function getDetailCardTemplate(pokeIndex, dataArray) {
                   <p>Abilities:</p>
                 </div>
                 <div class="mainInfoValues">
-                  <p>0,6 m</p>
-                  <p>8,5 kg</p>
-                  <p>62</p>
-                  <p>blaze, solarpower</p>
+                  <p>${getHeight(pokeIndex, dataArray)}</p>
+                  <p>${getWeight(pokeIndex, dataArray)}</p>
+                  <p>${dataArray[pokeIndex].base_experience}</p>
+                  <p>${getAbilities(pokeIndex, dataArray)}</p>
                 </div>
-              </div>
-            </div>
-            <div class="arrowButtons"></div>
-          </div>
-        </div>`;
+            </div>`;
 }
 
 function fristLetterUpperCase(word) {
