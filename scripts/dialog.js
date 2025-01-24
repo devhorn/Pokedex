@@ -82,4 +82,12 @@ function getHeight(pokeIndex, dataArray) {
 function renderStats() {
   let detailCardContentRef = document.getElementById("detailCardContent");
   detailCardContentRef.innerHTML = "";
+  for (let i = 0; i < 6; i++) {
+    detailCardContentRef.innerHTML += getStatBarTemplate();
+  }
+}
+
+function renderEvoChain() {
+  let detailCardContentRef = document.getElementById("detailCardContent");
+  detailCardContentRef.innerHTML = "";
 }

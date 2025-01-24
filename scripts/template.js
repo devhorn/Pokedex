@@ -44,8 +44,8 @@ function getDetailCardTemplate(pokeIndex, dataArray, arrayToToggle) {
           <div class="detailCardHalfTwo">
             <div class="detailCardButtons">
               <div onclick="renderMainInfoOfCard(${pokeIndex}, '${arrayToToggle}')" class="button main">main</div>
-              <div onclick="renderStats()"class="button stats">stats</div>
-              <div class="button evoChain">evoChain</div>
+              <div onclick="renderStats(${pokeIndex}, '${arrayToToggle}')" class="button stats">stats</div>
+              <div onclick="renderEvoChain()" class="button evoChain">evoChain</div>
             </div>
             <div id="detailCardContent" class="detailCardContent"></div>
             <div class="arrowButtons"></div>
@@ -68,6 +68,15 @@ function getMainInfoTemplate(pokeIndex, dataArray) {
                   <p>${getAbilities(pokeIndex, dataArray)}</p>
                 </div>
             </div>`;
+}
+
+function getStatBarTemplate() {
+  return `<div class="stat">
+            <label>HP</label>
+            <div class="statBarContainer">
+              <div class="statBar"></div>
+            </div>
+          </div>`;
 }
 
 function fristLetterUpperCase(word) {
