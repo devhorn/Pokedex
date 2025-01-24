@@ -27,7 +27,7 @@ function getTypeTemplate(typeName) {
   return `<div class="type">${typeName}</div>`;
 }
 
-function getDetailCardTemplate(pokeIndex, dataArray) {
+function getDetailCardTemplate(pokeIndex, dataArray, arrayToToggle) {
   return `<div onclick="stayOpen(event)" class="pokemonDetailCard ${
     dataArray[pokeIndex].types[0].type.name
   }">
@@ -43,33 +43,7 @@ function getDetailCardTemplate(pokeIndex, dataArray) {
           </div>
           <div class="detailCardHalfTwo">
             <div class="detailCardButtons">
-              <div onclick="renderMainInfoOfCard(${pokeIndex}, 'p')" class="button main">main</div>
-              <div onclick="renderStats()"class="button stats">stats</div>
-              <div class="button evoChain">evoChain</div>
-            </div>
-            <div id="detailCardContent" class="detailCardContent"></div>
-            <div class="arrowButtons"></div>
-          </div>
-        </div>`;
-}
-
-function getDetailCardInSearchTemplate(pokeIndex, dataArray) {
-  return `<div onclick="stayOpen(event)" class="pokemonDetailCard ${
-    dataArray[pokeIndex].types[0].type.name
-  }">
-          <div class="detailCardHalfOne">
-            <div class="detailCardHead">
-              <h5>${fristLetterUpperCase(dataArray[pokeIndex].name)}</h5>
-            </div>
-            <div class="detailCardImg">
-              <img src="${
-                dataArray[pokeIndex].sprites.other.home.front_default
-              }"/>
-            </div>
-          </div>
-          <div class="detailCardHalfTwo">
-            <div class="detailCardButtons">
-              <div onclick="renderMainInfoOfCard(${pokeIndex}, 's')" class="button main">main</div>
+              <div onclick="renderMainInfoOfCard(${pokeIndex}, '${arrayToToggle}')" class="button main">main</div>
               <div onclick="renderStats()"class="button stats">stats</div>
               <div class="button evoChain">evoChain</div>
             </div>

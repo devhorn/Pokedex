@@ -49,7 +49,6 @@ function renderSearchedPokemons() {
   if (toggleSearchContent) {
     toggleContent();
   }
-  console.log(searchedPokemonData);
   searchedContentRef.innerHTML = "";
   for (let pokeIndex = 0; pokeIndex < searchedPokemonData.length; pokeIndex++) {
     searchedContentRef.innerHTML += getPokemonCardTemplate(

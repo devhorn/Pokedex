@@ -3,17 +3,24 @@ function openDialog(pokeIndex, array) {
   dialogContainerRef.classList.toggle("dNone");
   document.getElementsByTagName("body")[0].style.overflow = "hidden";
   let arrayToUse;
+  let arrayToToggle;
   if (array === "p") {
     arrayToUse = pokemonData;
+    arrayToToggle = "p";
   } else if (array === "s") {
     arrayToUse = searchedPokemonData;
+    arrayToToggle = "s";
   }
-  renderDetailCard(pokeIndex, arrayToUse);
+  renderDetailCard(pokeIndex, arrayToUse, arrayToToggle);
 }
 
-function renderDetailCard(pokeIndex, pokemonData) {
+function renderDetailCard(pokeIndex, pokemonData, arrayToToggle) {
   let dialogContainerRef = document.getElementById("dialogContainer");
-  dialogContainerRef.innerHTML = getDetailCardTemplate(pokeIndex, pokemonData);
+  dialogContainerRef.innerHTML = getDetailCardTemplate(
+    pokeIndex,
+    pokemonData,
+    arrayToToggle
+  );
   intialRenderMainInfoOfCard(pokeIndex, pokemonData);
 }
 
@@ -42,24 +49,6 @@ function closeDialog(event) {
 
 function stayOpen(event) {
   event.stopPropagation(event);
-}
-
-function convertNum(num) {
-  let priceAsString = String(num);
-  if (priceAsString.includes(".")) {
-    priceAsString = priceAsString.replace(".", ",");
-    priceAsArr = priceAsString.split(",");
-    let numAfterComma = Number(priceAsArr[1]);
-    if (numAfterComma <= 9) {
-      let resultPrice = priceAsArr.toString();
-      resultPrice = resultPrice + "0";
-      return resultPrice;
-    }
-    return priceAsString;
-  } else {
-    priceAsString += ",00";
-    return priceAsString;
-  }
 }
 
 function getAbilities(pokeIndex, dataArray) {
