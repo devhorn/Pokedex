@@ -5,8 +5,10 @@ let loadedPokemons = [];
 let pokemonData = [];
 
 async function init() {
+  openLoadingOverlay();
   await initialLoadPokemons();
   await getInitialPokemonData();
+  closeLoadingOverlay();
   initialRenderingOfPokemons();
   renderTypes();
 }
@@ -54,4 +56,18 @@ function renderTypes() {
       typeContentRef.innerHTML += getTypeTemplate(typeName);
     }
   }
+}
+
+function openLoadingOverlay() {
+  let loadingOverlayRef = document.getElementById("loadingOverlay");
+  loadingOverlayRef.classList.toggle("dNone");
+  document.getElementsByTagName("body")[0].style.overflow = "hidden";
+  document.getElementById("loadMoreButton").disabled = true;
+}
+
+function closeLoadingOverlay() {
+  let loadingOverlayRef = document.getElementById("loadingOverlay");
+  loadingOverlayRef.classList.toggle("dNone");
+  document.getElementsByTagName("body")[0].style.overflow = "auto";
+  document.getElementById("loadMoreButton").disabled = false;
 }

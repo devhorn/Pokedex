@@ -1,5 +1,7 @@
 async function loadMorePokemons() {
+  openLoadingOverlay();
   await getMorePokemonData();
+  closeLoadingOverlay();
   renderMorePokemons();
   renderMoreTypes();
   amountOfRendertPokemons += amountOfLoad;

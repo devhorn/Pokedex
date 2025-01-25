@@ -13,6 +13,10 @@
   --bug: #ddb892;
   --normal: #ced4da;
   --psychic: #cdb4db;
+  --ground: #d17b3d;
+  --fairy: #fa7ddf;
+  --fighting: #fad27d;
+  --rock: #a2a4a7;
   --cardText: rgb(88, 88, 88);
 }
 
@@ -46,4 +50,24 @@
 
 .psychic {
   background-color: var(--psychic);
+}
+
+.ground {
+  background-color: var(--ground);
+}
+
+.fairy {
+  background-color: var(--fairy);
+}
+
+.fighting {
+  background-color: var(--fighting);
+}
+
+.rock {
+  background-color: var(--rock);
+}
+
+.ghost {
+  background-color: rgb(212, 167, 167);
 }
