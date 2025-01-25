@@ -2,15 +2,8 @@ function openDialog(pokeIndex, array) {
   let dialogContainerRef = document.getElementById("dialogContainer");
   dialogContainerRef.classList.toggle("dNone");
   document.getElementsByTagName("body")[0].style.overflow = "hidden";
-  let arrayToUse;
-  let arrayToToggle;
-  if (array === "p") {
-    arrayToUse = pokemonData;
-    arrayToToggle = "p";
-  } else if (array === "s") {
-    arrayToUse = searchedPokemonData;
-    arrayToToggle = "s";
-  }
+  let arrayToUse = getNeededPokemonArr(array);
+  let arrayToToggle = getArrayToToggle(array);
   renderDetailCard(pokeIndex, arrayToUse, arrayToToggle);
 }
 
@@ -85,9 +78,11 @@ function renderStats(pokeIndex, array) {
   }
 }
 
-function renderEvoChain() {
+function renderEvoChain(pokeIndex) {
   let detailCardContentRef = document.getElementById("detailCardContent");
   detailCardContentRef.innerHTML = "";
+  /* firstEvolution = evolutionChains[pokeIndex].chain.species.name; */
+  detailCardContentRef.innerHTML = getEvoChainTemplate(pokeIndex);
 }
 
 function getNeededPokemonArr(array) {

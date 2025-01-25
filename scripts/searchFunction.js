@@ -15,7 +15,9 @@ async function searchPokemons() {
   }
   document.getElementById("warning").innerHTML = "";
   searchResultArr = getSearchedPokemons(searchInput);
+  openLoadingOverlay();
   await getSearchedPokemonData(searchResultArr);
+  closeLoadingOverlay();
   renderSearchedPokemons();
   toggleSearchContent = false;
 }

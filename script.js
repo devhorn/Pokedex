@@ -3,6 +3,7 @@ let amountOfRendertPokemons = 20;
 let amountOfLoad = 20;
 let loadedPokemons = [];
 let pokemonData = [];
+let evolutionChains = [];
 
 async function init() {
   openLoadingOverlay();
@@ -70,4 +71,24 @@ function closeLoadingOverlay() {
   loadingOverlayRef.classList.toggle("dNone");
   document.getElementsByTagName("body")[0].style.overflow = "auto";
   document.getElementById("loadMoreButton").disabled = false;
+}
+
+async function getEvolutionChain() {
+  let url = "https://pokeapi.co/api/v2/pokemon-species/";
+  id = 1;
+  for (let pokeIndex = 0; pokeIndex < pokemonData.length; pokeIndex++) {
+    try {
+      let response = await fetch(url + `${id}`);
+      let responseAsJson = await response.json();
+      let responseEvolutionChain = await fetch(
+        responseAsJson.evolution_chain.url
+      );
+      let evolutionChainAsJson = await responseEvolutionChain.json();
+      evolutionChains.push(evolutionChainAsJson);
+    } catch (error) {
+      pokemonContentRef.innerHTML = getLoadDataErrorMessage(error);
+    }
+    id++;
+  }
+  console.log(evolutionChains);
 }
