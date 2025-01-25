@@ -28,10 +28,12 @@ function getTypeTemplate(typeName) {
 }
 
 function getDetailCardTemplate(pokeIndex, dataArray, arrayToToggle) {
-  return `<div onclick="stayOpen(event)" class="pokemonDetailCard ${
-    dataArray[pokeIndex].types[0].type.name
-  }">
-          <div class="detailCardHalfOne">
+  return `<div class="arrowButtons">
+            <img onclick="pokemonBackward(${pokeIndex}, '${arrayToToggle}', event)" class="arrow" src="./assets/icons/arrow_back_w.png">
+            <div onclick="stayOpen(event)" class="pokemonDetailCard ${
+              dataArray[pokeIndex].types[0].type.name
+            }">
+            <div class="detailCardHalfOne">
             <div class="detailCardHead">
               <h5>${fristLetterUpperCase(dataArray[pokeIndex].name)}</h5>
             </div>
@@ -40,18 +42,17 @@ function getDetailCardTemplate(pokeIndex, dataArray, arrayToToggle) {
                 dataArray[pokeIndex].sprites.other.home.front_default
               }"/>
             </div>
-          </div>
-          <div class="detailCardHalfTwo">
-            <div class="detailCardButtons">
-              <div onclick="renderMainInfoOfCard(${pokeIndex}, '${arrayToToggle}')" class="button main">main</div>
-              <div onclick="renderStats(${pokeIndex}, '${arrayToToggle}')" class="button stats">stats</div>
-              <div onclick="renderEvoChain()" class="button evoChain">evoChain</div>
             </div>
-            <div id="detailCardContent" class="detailCardContent"></div>
-            <div class="arrowButtons">
-            <img>
-            </div>
+            <div class="detailCardHalfTwo">
+              <div class="detailCardButtons">
+                <div onclick="renderMainInfoOfCard(${pokeIndex}, '${arrayToToggle}')" class="button main">main</div>
+                <div onclick="renderStats(${pokeIndex}, '${arrayToToggle}')" class="button stats">stats</div>
+                <div onclick="renderEvoChain()" class="button evoChain">evoChain</div>
+              </div>
+            <div id="detailCardContent" class="detailCardContent"></div>            
           </div>
+        </div>
+              <img onclick="pokemonForward(${pokeIndex}, '${arrayToToggle}', event)" class="arrow" src="./assets/icons/arrow_forw_w.png">
         </div>`;
 }
 

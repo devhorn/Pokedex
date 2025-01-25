@@ -118,7 +118,7 @@
 .statBarContainer {
   width: 400px;
   height: 20px;
-  border: 1px solid lightgrey;
+  border: 1px solid rgb(165, 163, 163);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -133,4 +133,19 @@
 
 .stat label {
   font-weight: 500;
+}
+
+.arrowButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+}
+.arrow {
+  height: 50px !important;
+  cursor: pointer;
+}
+
+.arrow:hover {
+  filter: drop-shadow(0 0 10px lightgray);
 }

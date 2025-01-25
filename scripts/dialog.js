@@ -14,14 +14,14 @@ function openDialog(pokeIndex, array) {
   renderDetailCard(pokeIndex, arrayToUse, arrayToToggle);
 }
 
-function renderDetailCard(pokeIndex, pokemonData, arrayToToggle) {
+function renderDetailCard(pokeIndex, arrayToUse, arrayToToggle) {
   let dialogContainerRef = document.getElementById("dialogContainer");
   dialogContainerRef.innerHTML = getDetailCardTemplate(
     pokeIndex,
-    pokemonData,
+    arrayToUse,
     arrayToToggle
   );
-  intialRenderMainInfoOfCard(pokeIndex, pokemonData);
+  intialRenderMainInfoOfCard(pokeIndex, arrayToUse);
 }
 
 function intialRenderMainInfoOfCard(pokeIndex, array) {
@@ -98,4 +98,44 @@ function getNeededPokemonArr(array) {
     arrayToUse = searchedPokemonData;
   }
   return arrayToUse;
+}
+
+function getArrayToToggle(array) {
+  let arrayToToggle;
+  if (array === "p") {
+    arrayToToggle = "p";
+  } else if (array === "s") {
+    arrayToToggle = "s";
+  }
+  return arrayToToggle;
+}
+
+function pokemonForward(pokeIndex, array, event) {
+  let nextIndex = pokeIndex + 1;
+  let dialogContainerRef = document.getElementById("dialogContainer");
+  let arrayToUse = getNeededPokemonArr(array);
+  let arrayToToggle = getArrayToToggle(array);
+  dialogContainerRef.innerHTML = "";
+  if (nextIndex <= arrayToUse.length - 1) {
+    renderDetailCard(nextIndex, arrayToUse, arrayToToggle);
+  } else {
+    nextIndex = 0;
+    renderDetailCard(nextIndex, arrayToUse, arrayToToggle);
+  }
+  event.stopPropagation(event);
+}
+
+function pokemonBackward(pokeIndex, array, event) {
+  let nextIndex = pokeIndex - 1;
+  let dialogContainerRef = document.getElementById("dialogContainer");
+  let arrayToUse = getNeededPokemonArr(array);
+  let arrayToToggle = getArrayToToggle(array);
+  dialogContainerRef.innerHTML = "";
+  if (nextIndex >= 0) {
+    renderDetailCard(nextIndex, arrayToUse, arrayToToggle);
+  } else {
+    nextIndex = arrayToUse.length - 1;
+    renderDetailCard(nextIndex, arrayToUse, arrayToToggle);
+  }
+  event.stopPropagation(event);
 }
