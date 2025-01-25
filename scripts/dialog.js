@@ -30,12 +30,7 @@ function intialRenderMainInfoOfCard(pokeIndex, array) {
 }
 
 function renderMainInfoOfCard(pokeIndex, array) {
-  let arrayToUse;
-  if (array === "p") {
-    arrayToUse = pokemonData;
-  } else if (array === "s") {
-    arrayToUse = searchedPokemonData;
-  }
+  let arrayToUse = getNeededPokemonArr(array);
   let detailCardContentRef = document.getElementById("detailCardContent");
   detailCardContentRef.innerHTML = getMainInfoTemplate(pokeIndex, arrayToUse);
 }
@@ -79,15 +74,28 @@ function getHeight(pokeIndex, dataArray) {
   return height;
 }
 
-function renderStats() {
+function renderStats(pokeIndex, array) {
+  let arrayToUse = getNeededPokemonArr(array);
   let detailCardContentRef = document.getElementById("detailCardContent");
   detailCardContentRef.innerHTML = "";
-  for (let i = 0; i < 6; i++) {
-    detailCardContentRef.innerHTML += getStatBarTemplate();
+  for (let i = 0; i < arrayToUse[pokeIndex].stats.length; i++) {
+    let statName = arrayToUse[pokeIndex].stats[i].stat.name;
+    let statValue = arrayToUse[pokeIndex].stats[i].base_stat;
+    detailCardContentRef.innerHTML += getStatBarTemplate(statName, statValue);
   }
 }
 
 function renderEvoChain() {
   let detailCardContentRef = document.getElementById("detailCardContent");
   detailCardContentRef.innerHTML = "";
+}
+
+function getNeededPokemonArr(array) {
+  let arrayToUse;
+  if (array === "p") {
+    arrayToUse = pokemonData;
+  } else if (array === "s") {
+    arrayToUse = searchedPokemonData;
+  }
+  return arrayToUse;
 }

@@ -48,7 +48,9 @@ function getDetailCardTemplate(pokeIndex, dataArray, arrayToToggle) {
               <div onclick="renderEvoChain()" class="button evoChain">evoChain</div>
             </div>
             <div id="detailCardContent" class="detailCardContent"></div>
-            <div class="arrowButtons"></div>
+            <div class="arrowButtons">
+            <img>
+            </div>
           </div>
         </div>`;
 }
@@ -70,11 +72,11 @@ function getMainInfoTemplate(pokeIndex, dataArray) {
             </div>`;
 }
 
-function getStatBarTemplate() {
+function getStatBarTemplate(statName, statValue) {
   return `<div class="stat">
-            <label>HP</label>
+            <label>${fristLetterUpperCase(statName)}: ${statValue}</label>
             <div class="statBarContainer">
-              <div class="statBar"></div>
+              <div class="statBar" style="width:${statValue * 2}px;"></div>
             </div>
           </div>`;
 }

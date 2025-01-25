@@ -1,7 +1,6 @@
 BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=1302&offset=0";
 let amountOfRendertPokemons = 20;
 let amountOfLoad = 20;
-
 let loadedPokemons = [];
 let pokemonData = [];
 

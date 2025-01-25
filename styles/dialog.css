@@ -107,7 +107,7 @@
 }
 
 .stat {
-  margin-top: 8px;
+  margin-top: 12px;
   padding-left: 8px;
 }
 
@@ -118,7 +118,8 @@
 .statBarContainer {
   width: 400px;
   height: 20px;
-  border: 1px solid black;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
   display: flex;
   align-items: center;
 }
@@ -126,5 +127,10 @@
 .statBar {
   width: 80%;
   height: 15px;
-  background-color: blue;
+  background-color: #118ab2;
+  border-radius: 10px;
+}
+
+.stat label {
+  font-weight: 500;
 }
