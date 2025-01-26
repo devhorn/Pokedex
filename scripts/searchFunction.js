@@ -1,4 +1,5 @@
 let searchedPokemonData = [];
+let evolutonChainForSearchedPokemon = [];
 let toggleSearchContent = true;
 
 function showInputWarning() {

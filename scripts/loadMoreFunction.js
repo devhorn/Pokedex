@@ -63,13 +63,7 @@ async function getMoreEvolutionChains() {
     pokeIndex++
   ) {
     try {
-      let response = await fetch(url + `${id}`);
-      let responseAsJson = await response.json();
-      let responseEvolutionChain = await fetch(
-        responseAsJson.evolution_chain.url
-      );
-      let evolutionChainAsJson = await responseEvolutionChain.json();
-      evolutionChains.push(evolutionChainAsJson);
+      await fillEvoChainArr(url, id);
     } catch (error) {
       pokemonContentRef.innerHTML = getLoadDataErrorMessage(error);
     }
