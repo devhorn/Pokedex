@@ -118,16 +118,16 @@ async function buildEvoChainForPokemonDataArr(pokeIndex) {
     evoChainNames.push(thirdEvo);
   }
   let evoChainImgUrls = await getEvoChainImgArr(evoChainNames);
-  renderEvoChain(pokeIndex, evoChainImgUrls);
+  renderEvoChain(pokeIndex, evoChainImgUrls, evoChainNames);
 }
 
-function renderEvoChain(pokeIndex, imgUrls) {
+function renderEvoChain(pokeIndex, imgUrls, names) {
   let detailCardContentRef = document.getElementById("detailCardContent");
   detailCardContentRef.innerHTML = "";
   detailCardContentRef.innerHTML = getEvoChainContentTemplate(pokeIndex);
   let chainRef = document.getElementById(`chainContent${pokeIndex}`);
   for (let i = 0; i < imgUrls.length; i++) {
-    chainRef.innerHTML += getEvoImgTemplate(imgUrls[i]);
+    chainRef.innerHTML += getEvoImgTemplate(imgUrls[i], names[i]);
   }
 }
 

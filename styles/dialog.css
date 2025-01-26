@@ -166,3 +166,9 @@
 .evoChainImg {
   width: 130px;
 }
+
+.evoImgWithText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

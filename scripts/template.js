@@ -86,8 +86,11 @@ function getEvoChainContentTemplate(pokeIndex) {
   return `<div id="chainContent${pokeIndex}" class="evoChainContainer"></div>`;
 }
 
-function getEvoImgTemplate(url) {
-  return `<img class="evoChainImg" src="${url}"/>`;
+function getEvoImgTemplate(url, name) {
+  return `<div class="evoImgWithText">
+            <img class="evoChainImg" src="${url}"/>
+            <p>${fristLetterUpperCase(name)}</p>
+          </div>`;
 }
 
 function fristLetterUpperCase(word) {

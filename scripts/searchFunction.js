@@ -1,5 +1,5 @@
 let searchedPokemonData = [];
-let evolutonChainForSearchedPokemon = [];
+let evoChainSearchedPokemon = [];
 let toggleSearchContent = true;
 
 function showInputWarning() {
@@ -8,7 +8,7 @@ function showInputWarning() {
 }
 
 async function searchPokemons() {
-  evolutonChainForSearchedPokemon = [];
+  evoChainSearchedPokemon = [];
   searchInputRef = document.getElementById("search");
   searchInput = searchInputRef.value;
   if (searchInput.length < 3) {
@@ -115,30 +115,29 @@ async function fillSearchEvoChainArr(url, id) {
   let responseAsJson = await response.json();
   let responseEvolutionChain = await fetch(responseAsJson.evolution_chain.url);
   let evolutionChainAsJson = await responseEvolutionChain.json();
-  evolutonChainForSearchedPokemon.push(evolutionChainAsJson);
+  evoChainSearchedPokemon.push(evolutionChainAsJson);
 }
 
 async function buildEvoChainForSearchedPokemonDataArr(pokeIndex) {
   let evoChainNames = [];
-  let firstEvo = evolutonChainForSearchedPokemon[pokeIndex].chain.species.name;
+  let firstEvo = evoChainSearchedPokemon[pokeIndex].chain.species.name;
   evoChainNames.push(firstEvo);
-  if (evolutonChainForSearchedPokemon[pokeIndex].chain.evolves_to.length > 0) {
+  if (evoChainSearchedPokemon[pokeIndex].chain.evolves_to.length > 0) {
     let secondEvo =
-      evolutonChainForSearchedPokemon[pokeIndex].chain.evolves_to[0].species
-        .name;
+      evoChainSearchedPokemon[pokeIndex].chain.evolves_to[0].species.name;
     evoChainNames.push(secondEvo);
   }
   if (
-    evolutonChainForSearchedPokemon[pokeIndex].chain.evolves_to[0] !=
-      undefined &&
-    evolutonChainForSearchedPokemon[pokeIndex].chain.evolves_to[0].evolves_to
-      .length > 0
+    evoChainSearchedPokemon[pokeIndex].chain.evolves_to[0] != undefined &&
+    evoChainSearchedPokemon[pokeIndex].chain.evolves_to[0].evolves_to.length > 0
   ) {
     let thirdEvo =
-      evolutonChainForSearchedPokemon[pokeIndex].chain.evolves_to[0]
-        .evolves_to[0].species.name;
+      evoChainSearchedPokemon[pokeIndex].chain.evolves_to[0].evolves_to[0]
+        .species.name;
     evoChainNames.push(thirdEvo);
   }
+  openLoadingOverlay();
   let evoChainImgUrls = await getEvoChainImgArr(evoChainNames);
-  renderEvoChain(pokeIndex, evoChainImgUrls);
+  closeLoadingOverlay();
+  renderEvoChain(pokeIndex, evoChainImgUrls, evoChainNames);
 }

@@ -17,7 +17,8 @@
   --fairy: #fa7ddf;
   --fighting: #fad27d;
   --rock: #a2a4a7;
-  --cardText: rgb(88, 88, 88);
+  --dragon: #6392a3;
+  --cardText: rgb(68, 67, 67);
 }
 
 .fire {
@@ -70,4 +71,8 @@
 
 .ghost {
   background-color: rgb(212, 167, 167);
+}
+
+.dragon {
+  background-color: var(--dragon);
 }
