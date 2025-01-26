@@ -9,7 +9,7 @@ async function init() {
   openLoadingOverlay();
   await initialLoadPokemons();
   await getInitialPokemonData();
-  await getEvolutionChain();
+  await getEvolutionChains();
   closeLoadingOverlay();
   initialRenderingOfPokemons();
   renderTypes();
@@ -74,9 +74,9 @@ function closeLoadingOverlay() {
   document.getElementById("loadMoreButton").disabled = false;
 }
 
-async function getEvolutionChain() {
+async function getEvolutionChains() {
   let url = "https://pokeapi.co/api/v2/pokemon-species/";
-  id = 1;
+  let id = 1;
   for (let pokeIndex = 0; pokeIndex < pokemonData.length; pokeIndex++) {
     try {
       await fillEvoChainArr(url, id);
@@ -95,7 +95,16 @@ async function fillEvoChainArr(url, id) {
   evolutionChains.push(evolutionChainAsJson);
 }
 
-async function buildEvoChain(pokeIndex) {
+async function buildEvoChain(pokeIndex, arrayToTrigger) {
+  if (arrayToTrigger === "p") {
+    await buildEvoChainForPokemonDataArr(pokeIndex);
+  }
+  if (arrayToTrigger === "s") {
+    await buildEvoChainForSearchedPokemonDataArr(pokeIndex);
+  }
+}
+
+async function buildEvoChainForPokemonDataArr(pokeIndex) {
   let evoChainNames = [];
   let firstEvo = evolutionChains[pokeIndex].chain.species.name;
   evoChainNames.push(firstEvo);

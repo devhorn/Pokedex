@@ -47,7 +47,7 @@ function getDetailCardTemplate(pokeIndex, dataArray, arrayToTrigger) {
               <div class="detailCardButtons">
                 <div onclick="renderMainInfoOfCard(${pokeIndex}, '${arrayToTrigger}')" class="button main">main</div>
                 <div onclick="renderStats(${pokeIndex}, '${arrayToTrigger}')" class="button stats">stats</div>
-                <div onclick="buildEvoChain(${pokeIndex})" class="button evoChain">evoChain</div>
+                <div onclick="buildEvoChain(${pokeIndex}, '${arrayToTrigger}')" class="button evoChain">evoChain</div>
               </div>
             <div id="detailCardContent" class="detailCardContent"></div>            
           </div>
