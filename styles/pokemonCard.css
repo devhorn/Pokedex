@@ -26,7 +26,6 @@
 }
 
 .type {
-  border: 3px solid var(--cardText);
   border-radius: 30px;
   display: flex;
   justify-content: center;
@@ -34,5 +33,6 @@
   width: 80px;
   text-align: center;
   color: var(--cardText);
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 18px;
 }
