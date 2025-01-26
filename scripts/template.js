@@ -47,7 +47,7 @@ function getDetailCardTemplate(pokeIndex, dataArray, arrayToToggle) {
               <div class="detailCardButtons">
                 <div onclick="renderMainInfoOfCard(${pokeIndex}, '${arrayToToggle}')" class="button main">main</div>
                 <div onclick="renderStats(${pokeIndex}, '${arrayToToggle}')" class="button stats">stats</div>
-                <div onclick="renderEvoChain(${pokeIndex})" class="button evoChain">evoChain</div>
+                <div onclick="buildEvoChain(${pokeIndex})" class="button evoChain">evoChain</div>
               </div>
             <div id="detailCardContent" class="detailCardContent"></div>            
           </div>
@@ -82,20 +82,12 @@ function getStatBarTemplate(statName, statValue) {
           </div>`;
 }
 
-function getEvoChainTemplate(pokeIndex) {
-  return `<div class="evoChainContainer">
-            <div class="evoChain">
-              <div class="firstRow">
-                <img class="evoChainImg" src="${pokemonData[pokeIndex].sprites.other.home.front_default}"/>
-                <img class="evoArrow" src="./assets/icons/arrow_forward.png">
-                <img class="evoChainImg" src="${pokemonData[pokeIndex].sprites.other.home.front_default}"/>
-              </div>
-              <div class="secondRow">
-                <img class="evoArrow" src="./assets/icons/arrow_forward.png">
-                <img class="evoChainImg" src="${pokemonData[pokeIndex].sprites.other.home.front_default}"/>
-              </div>
-            </div>
-          </div>`;
+function getEvoChainContentTemplate(pokeIndex) {
+  return `<div id="chainContent${pokeIndex}" class="evoChainContainer"></div>`;
+}
+
+function getEvoImgTemplate(url) {
+  return `<img class="evoChainImg" src="${url}"/>`;
 }
 
 function fristLetterUpperCase(word) {

@@ -9,6 +9,7 @@ async function init() {
   openLoadingOverlay();
   await initialLoadPokemons();
   await getInitialPokemonData();
+  await getEvolutionChain();
   closeLoadingOverlay();
   initialRenderingOfPokemons();
   renderTypes();
@@ -91,4 +92,48 @@ async function getEvolutionChain() {
     id++;
   }
   console.log(evolutionChains);
+}
+
+async function buildEvoChain(pokeIndex) {
+  let evoChainNames = [];
+  let firstEvo = evolutionChains[pokeIndex].chain.species.name;
+  evoChainNames.push(firstEvo);
+  if (evolutionChains[pokeIndex].chain.evolves_to.length > 0) {
+    let secondEvo = evolutionChains[pokeIndex].chain.evolves_to[0].species.name;
+    evoChainNames.push(secondEvo);
+  }
+  if (evolutionChains[pokeIndex].chain.evolves_to[0].evolves_to.length > 0) {
+    let thirdEvo =
+      evolutionChains[pokeIndex].chain.evolves_to[0].evolves_to[0].species.name;
+    evoChainNames.push(thirdEvo);
+  }
+  let evoChainImgUrls = await getEvoChainImgArr(evoChainNames);
+  renderEvoChain(pokeIndex, evoChainImgUrls);
+}
+
+function renderEvoChain(pokeIndex, imgUrls) {
+  let detailCardContentRef = document.getElementById("detailCardContent");
+  detailCardContentRef.innerHTML = "";
+  detailCardContentRef.innerHTML = getEvoChainContentTemplate(pokeIndex);
+  let chainRef = document.getElementById(`chainContent${pokeIndex}`);
+  for (let i = 0; i < imgUrls.length; i++) {
+    chainRef.innerHTML += getEvoImgTemplate(imgUrls[i]);
+  }
+}
+
+async function getEvoChainImgArr(namesArr) {
+  let detailCardContentRef = document.getElementById("detailCardContent");
+  let url = "https://pokeapi.co/api/v2/pokemon/";
+  let evoChainImgUrls = [];
+  for (let nameIndex = 0; nameIndex < namesArr.length; nameIndex++) {
+    try {
+      let response = await fetch(url + `${namesArr[nameIndex]}`);
+      let responseAsJson = await response.json();
+      evoChainImgUrls.push(responseAsJson.sprites.other.home.front_default);
+    } catch (error) {
+      detailCardContentRef.innerHTML = "";
+      detailCardContentRef.innerHTML = "<p>Fehler beim Laden der Daten</p>";
+    }
+  }
+  return evoChainImgUrls;
 }

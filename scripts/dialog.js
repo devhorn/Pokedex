@@ -78,13 +78,6 @@ function renderStats(pokeIndex, array) {
   }
 }
 
-function renderEvoChain(pokeIndex) {
-  let detailCardContentRef = document.getElementById("detailCardContent");
-  detailCardContentRef.innerHTML = "";
-  /* firstEvolution = evolutionChains[pokeIndex].chain.species.name; */
-  detailCardContentRef.innerHTML = getEvoChainTemplate(pokeIndex);
-}
-
 function getNeededPokemonArr(array) {
   let arrayToUse;
   if (array === "p") {
@@ -134,3 +127,5 @@ function pokemonBackward(pokeIndex, array, event) {
   }
   event.stopPropagation(event);
 }
+
+async function getEvoChain() {}
