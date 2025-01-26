@@ -3,16 +3,16 @@ function openDialog(pokeIndex, array) {
   dialogContainerRef.classList.toggle("dNone");
   document.getElementsByTagName("body")[0].style.overflow = "hidden";
   let arrayToUse = getNeededPokemonArr(array);
-  let arrayToToggle = getArrayToToggle(array);
-  renderDetailCard(pokeIndex, arrayToUse, arrayToToggle);
+  let arrayToTrigger = getArrayToTrigger(array);
+  renderDetailCard(pokeIndex, arrayToUse, arrayToTrigger);
 }
 
-function renderDetailCard(pokeIndex, arrayToUse, arrayToToggle) {
+function renderDetailCard(pokeIndex, arrayToUse, arrayToTrigger) {
   let dialogContainerRef = document.getElementById("dialogContainer");
   dialogContainerRef.innerHTML = getDetailCardTemplate(
     pokeIndex,
     arrayToUse,
-    arrayToToggle
+    arrayToTrigger
   );
   intialRenderMainInfoOfCard(pokeIndex, arrayToUse);
 }
@@ -88,27 +88,27 @@ function getNeededPokemonArr(array) {
   return arrayToUse;
 }
 
-function getArrayToToggle(array) {
-  let arrayToToggle;
+function getArrayToTrigger(array) {
+  let arrayToTrigger;
   if (array === "p") {
-    arrayToToggle = "p";
+    arrayToTrigger = "p";
   } else if (array === "s") {
-    arrayToToggle = "s";
+    arrayToTrigger = "s";
   }
-  return arrayToToggle;
+  return arrayToTrigger;
 }
 
 function pokemonForward(pokeIndex, array, event) {
   let nextIndex = pokeIndex + 1;
   let dialogContainerRef = document.getElementById("dialogContainer");
   let arrayToUse = getNeededPokemonArr(array);
-  let arrayToToggle = getArrayToToggle(array);
+  let arrayToTrigger = getArrayToTrigger(array);
   dialogContainerRef.innerHTML = "";
   if (nextIndex <= arrayToUse.length - 1) {
-    renderDetailCard(nextIndex, arrayToUse, arrayToToggle);
+    renderDetailCard(nextIndex, arrayToUse, arrayToTrigger);
   } else {
     nextIndex = 0;
-    renderDetailCard(nextIndex, arrayToUse, arrayToToggle);
+    renderDetailCard(nextIndex, arrayToUse, arrayToTrigger);
   }
   event.stopPropagation(event);
 }
@@ -117,15 +117,13 @@ function pokemonBackward(pokeIndex, array, event) {
   let nextIndex = pokeIndex - 1;
   let dialogContainerRef = document.getElementById("dialogContainer");
   let arrayToUse = getNeededPokemonArr(array);
-  let arrayToToggle = getArrayToToggle(array);
+  let arrayToTrigger = getArrayToTrigger(array);
   dialogContainerRef.innerHTML = "";
   if (nextIndex >= 0) {
-    renderDetailCard(nextIndex, arrayToUse, arrayToToggle);
+    renderDetailCard(nextIndex, arrayToUse, arrayToTrigger);
   } else {
     nextIndex = arrayToUse.length - 1;
-    renderDetailCard(nextIndex, arrayToUse, arrayToToggle);
+    renderDetailCard(nextIndex, arrayToUse, arrayToTrigger);
   }
   event.stopPropagation(event);
 }
-
-async function getEvoChain() {}
