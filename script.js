@@ -91,7 +91,6 @@ async function getEvolutionChain() {
     }
     id++;
   }
-  console.log(evolutionChains);
 }
 
 async function buildEvoChain(pokeIndex) {

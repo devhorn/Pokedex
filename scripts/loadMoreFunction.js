@@ -1,6 +1,7 @@
 async function loadMorePokemons() {
   openLoadingOverlay();
   await getMorePokemonData();
+  await getMoreEvolutionChains();
   closeLoadingOverlay();
   renderMorePokemons();
   renderMoreTypes();
@@ -49,5 +50,29 @@ function renderMoreTypes() {
       let typeName = pokemonData[pokeIndex].types[i].type.name;
       typeContentRef.innerHTML += getTypeTemplate(typeName);
     }
+  }
+}
+
+async function getMoreEvolutionChains() {
+  let currentIndex = amountOfRendertPokemons;
+  let url = "https://pokeapi.co/api/v2/pokemon-species/";
+  id = amountOfRendertPokemons + 1;
+  for (
+    let pokeIndex = currentIndex;
+    pokeIndex < amountOfRendertPokemons + amountOfLoad;
+    pokeIndex++
+  ) {
+    try {
+      let response = await fetch(url + `${id}`);
+      let responseAsJson = await response.json();
+      let responseEvolutionChain = await fetch(
+        responseAsJson.evolution_chain.url
+      );
+      let evolutionChainAsJson = await responseEvolutionChain.json();
+      evolutionChains.push(evolutionChainAsJson);
+    } catch (error) {
+      pokemonContentRef.innerHTML = getLoadDataErrorMessage(error);
+    }
+    id++;
   }
 }
