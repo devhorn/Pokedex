@@ -129,27 +129,27 @@ async function fillSearchEvoChainArr(url, id) {
 }
 
 async function buildEvoChainForSearchedPokemonDataArr(pokeIndex) {
-  let evoChainNames = [];
-  let firstEvo = evoChainSearchedPokemon[pokeIndex].chain.species.name;
-  evoChainNames.push(firstEvo);
-  if (evoChainSearchedPokemon[pokeIndex].chain.evolves_to.length > 0) {
-    let secondEvo =
-      evoChainSearchedPokemon[pokeIndex].chain.evolves_to[0].species.name;
-    evoChainNames.push(secondEvo);
-  }
-  if (
-    evoChainSearchedPokemon[pokeIndex].chain.evolves_to[0] != undefined &&
-    evoChainSearchedPokemon[pokeIndex].chain.evolves_to[0].evolves_to.length > 0
-  ) {
-    let thirdEvo =
-      evoChainSearchedPokemon[pokeIndex].chain.evolves_to[0].evolves_to[0]
-        .species.name;
-    evoChainNames.push(thirdEvo);
-  }
+  let evoChainNames = getEvoChainNames(pokeIndex);
   openLoadingOverlay();
   let evoChainImgUrls = await getEvoChainImgArr(evoChainNames);
   closeLoadingOverlay();
   renderEvoChain(pokeIndex, evoChainImgUrls, evoChainNames);
+}
+
+function getEvoChainNames(pokeIndex) {
+  let evoChainNames = [];
+  let firstEvo = evoChainSearchedPokemon[pokeIndex].chain.species.name;
+  evoChainNames.push(firstEvo);
+  let evoKey = evoChainSearchedPokemon[pokeIndex].chain.evolves_to;
+  if (evoKey.length > 0) {
+    let secondEvo = evoKey[0].species.name;
+    evoChainNames.push(secondEvo);
+  }
+  if (evoKey[0] != undefined && evoKey[0].evolves_to.length > 0) {
+    let thirdEvo = evoKey[0].evolves_to[0].species.name;
+    evoChainNames.push(thirdEvo);
+  }
+  return evoChainNames;
 }
 
 function clearSearchWarningMessage(id) {
