@@ -107,19 +107,10 @@ async function buildEvoChain(pokeIndex, arrayToTrigger) {
 }
 
 async function buildEvoChainForPokemonDataArr(pokeIndex) {
-  let evoChainNames = [];
-  let firstEvo = evolutionChains[pokeIndex].chain.species.name;
-  evoChainNames.push(firstEvo);
-  if (evolutionChains[pokeIndex].chain.evolves_to.length > 0) {
-    let secondEvo = evolutionChains[pokeIndex].chain.evolves_to[0].species.name;
-    evoChainNames.push(secondEvo);
-  }
-  if (evolutionChains[pokeIndex].chain.evolves_to[0].evolves_to.length > 0) {
-    let thirdEvo =
-      evolutionChains[pokeIndex].chain.evolves_to[0].evolves_to[0].species.name;
-    evoChainNames.push(thirdEvo);
-  }
+  let evoChainNames = getEvoChainNames(pokeIndex);
+  openLoadingOverlay();
   let evoChainImgUrls = await getEvoChainImgArr(evoChainNames);
+  closeLoadingOverlay();
   renderEvoChain(pokeIndex, evoChainImgUrls, evoChainNames);
 }
 
@@ -148,4 +139,20 @@ async function getEvoChainImgArr(namesArr) {
     }
   }
   return evoChainImgUrls;
+}
+
+function getEvoChainNames(pokeIndex) {
+  let evoChainNames = [];
+  let firstEvo = evolutionChains[pokeIndex].chain.species.name;
+  evoChainNames.push(firstEvo);
+  if (evolutionChains[pokeIndex].chain.evolves_to.length > 0) {
+    let secondEvo = evolutionChains[pokeIndex].chain.evolves_to[0].species.name;
+    evoChainNames.push(secondEvo);
+  }
+  if (evolutionChains[pokeIndex].chain.evolves_to[0].evolves_to.length > 0) {
+    let thirdEvo =
+      evolutionChains[pokeIndex].chain.evolves_to[0].evolves_to[0].species.name;
+    evoChainNames.push(thirdEvo);
+  }
+  return evoChainNames;
 }

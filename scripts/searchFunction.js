@@ -133,14 +133,14 @@ async function fillSearchEvoChainArr(url, id) {
 }
 
 async function buildEvoChainForSearchedPokemonDataArr(pokeIndex) {
-  let evoChainNames = getEvoChainNames(pokeIndex);
+  let evoChainNames = getEvoChainNamesForSearchedPokemon(pokeIndex);
   openLoadingOverlay();
   let evoChainImgUrls = await getEvoChainImgArr(evoChainNames);
   closeLoadingOverlay();
   renderEvoChain(pokeIndex, evoChainImgUrls, evoChainNames);
 }
 
-function getEvoChainNames(pokeIndex) {
+function getEvoChainNamesForSearchedPokemon(pokeIndex) {
   let evoChainNames = [];
   let firstEvo = evoChainSearchedPokemon[pokeIndex].chain.species.name;
   evoChainNames.push(firstEvo);
