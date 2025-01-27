@@ -35,8 +35,16 @@ h1 {
   margin-bottom: 0 !important;
 }
 .searchInput {
-  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px !important;
   width: 300px;
+  padding-top: 20px;
+}
+
+.searchWarning {
+  height: 20px;
 }
 
 #warning {
