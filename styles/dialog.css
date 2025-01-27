@@ -96,19 +96,33 @@
   align-items: center;
   display: flex;
   justify-content: flex-start;
-  gap: 80px;
-  padding-left: 40px;
-  padding-top: 60px;
+  gap: 16px;
+  padding-left: 20px;
+  padding-top: 70px;
   height: 100%;
 }
 
 .mainInfo p {
   font-size: 18px;
-  font-weight: 600;
 }
 
 .mainInfoValues p {
   font-size: 18px;
+}
+
+.mainInfoRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mainInfoRow p {
+  font-size: 20px;
+}
+
+.mainInfoRow p:first-child {
+  font-weight: 600;
 }
 
 .stat {
@@ -136,7 +150,7 @@
   border-radius: 10px;
 }
 
-.stat label {
+.statLabel {
   font-weight: 500;
 }
 
@@ -152,6 +166,15 @@
 }
 
 .arrow:hover {
+  filter: drop-shadow(0 0 10px lightgray);
+}
+
+.arrowResp {
+  height: 50px !important;
+  cursor: pointer;
+}
+
+.arrowResp:hover {
   filter: drop-shadow(0 0 10px lightgray);
 }
 
@@ -171,4 +194,101 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.arrowButtonsResp {
+  display: none;
+}
+
+.statLabelResp {
+  display: none;
+}
+
+@media (max-width: 550px) {
+  .pokemonDetailCard {
+    height: 580px;
+    width: 300px;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  .arrowButtons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .arrowButtonsResp {
+    margin-top: 16px;
+    display: flex;
+    gap: 120px;
+  }
+
+  .detailCardImg img {
+    width: 200px;
+  }
+
+  .mainInfoCard {
+    gap: 16px;
+    padding-left: 18px;
+    padding-top: 40px;
+    width: 300px;
+  }
+
+  .mainInfo p {
+    font-size: 16px;
+  }
+
+  .mainInfoValues p {
+    font-size: 16px;
+  }
+
+  .button {
+    font-size: 18px;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    padding-left: 8px;
+  }
+
+  .stat h5 {
+    font-weight: 800;
+  }
+
+  .statBarContainer {
+    width: 280px;
+    height: 12px;
+  }
+
+  .statBar {
+    width: 80%;
+    height: 12px;
+    background-color: #118ab2;
+    border-radius: 10px;
+  }
+
+  .statLabel {
+    display: none;
+  }
+
+  .statLabelResp {
+    display: inline;
+    font-size: 14px;
+  }
+
+  .evoChainContainer {
+    height: 220px;
+  }
+
+  .evoChainImg {
+    width: 90px;
+  }
+
+  .evoImgWithText p {
+    font-size: 14px;
+  }
 }

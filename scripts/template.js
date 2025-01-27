@@ -53,29 +53,46 @@ function getDetailCardTemplate(pokeIndex, dataArray, arrayToTrigger) {
           </div>
         </div>
               <img onclick="pokemonForward(${pokeIndex}, '${arrayToTrigger}', event)" class="arrow" src="./assets/icons/arrow_forw_w.png">
-        </div>`;
+            <div class="arrowButtonsResp">
+              <img onclick="pokemonBackward(${pokeIndex}, '${arrayToTrigger}', event)" class="arrowResp" src="./assets/icons/arrow_back_w.png">
+              <img onclick="pokemonForward(${pokeIndex}, '${arrayToTrigger}', event)" class="arrowResp" src="./assets/icons/arrow_forw_w.png">
+            </div>
+        </div>
+        
+        `;
 }
 
 function getMainInfoTemplate(pokeIndex, dataArray) {
   return `  <div class="mainInfoCard">
                 <div class="mainInfo">
-                  <p>Height:</p>
-                  <p>Weight:</p>
-                  <p>Base experience:</p>
-                  <p>Abilities:</p>
-                </div>
-                <div class="mainInfoValues">
-                  <p>${getHeight(pokeIndex, dataArray)}</p>
-                  <p>${getWeight(pokeIndex, dataArray)}</p>
-                  <p>${dataArray[pokeIndex].base_experience}</p>
-                  <p>${getAbilities(pokeIndex, dataArray)}</p>
+                  <div class="mainInfoRow">
+                    <p>Height:</p>
+                    <p>${getHeight(pokeIndex, dataArray)}</p>
+                  </div>
+                  <div class="mainInfoRow">
+                    <p>Weight:</p>
+                    <p>${getWeight(pokeIndex, dataArray)}</p>
+                  </div>
+                  <div class="mainInfoRow">
+                    <p>Base-Exp:</p>
+                    <p>${dataArray[pokeIndex].base_experience}</p>
+                  </div>
+                  <div class="mainInfoRow">
+                    <p>Abilities:</p>
+                    <p>${getAbilities(pokeIndex, dataArray)}</p>
+                  </div>
                 </div>
             </div>`;
 }
 
 function getStatBarTemplate(statName, statValue) {
   return `<div class="stat">
-            <label>${fristLetterUpperCase(statName)}: ${statValue}</label>
+            <label class="statLabel">${fristLetterUpperCase(
+              statName
+            )}: ${statValue}</label>
+            <label class="statLabelResp">${fristLetterUpperCase(
+              statName
+            )}: ${statValue}</label>
             <div class="statBarContainer">
               <div class="statBar" style="width:${statValue * 2}px;"></div>
             </div>
@@ -103,3 +120,10 @@ function fristLetterUpperCase(word) {
   let remainingLetters = word.slice(1);
   return (capitalizedWord = firstLetterCap + remainingLetters);
 }
+
+/* <div class="mainInfoValues">
+<p>${getHeight(pokeIndex, dataArray)}</p>
+<p>${getWeight(pokeIndex, dataArray)}</p>
+<p>${dataArray[pokeIndex].base_experience}</p>
+<p>${getAbilities(pokeIndex, dataArray)}</p>
+</div> */
