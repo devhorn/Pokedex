@@ -104,6 +104,7 @@ async function buildEvoChain(pokeIndex, arrayToTrigger) {
   if (arrayToTrigger === "s") {
     await buildEvoChainForSearchedPokemonDataArr(pokeIndex);
   }
+  document.getElementById("search").disabled = true;
 }
 
 async function buildEvoChainForPokemonDataArr(pokeIndex) {
