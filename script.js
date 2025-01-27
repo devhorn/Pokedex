@@ -105,6 +105,7 @@ async function buildEvoChain(pokeIndex, arrayToTrigger) {
     await buildEvoChainForSearchedPokemonDataArr(pokeIndex);
   }
   document.getElementById("search").disabled = true;
+  document.getElementsByTagName("body")[0].style.overflow = "hidden";
 }
 
 async function buildEvoChainForPokemonDataArr(pokeIndex) {
