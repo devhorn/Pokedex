@@ -34,6 +34,9 @@ function getDetailCardTemplate(pokeIndex, dataArray, arrayToTrigger) {
               dataArray[pokeIndex].types[0].type.name
             }">
             <div class="detailCardHalfOne">
+            <div class="closingButton">
+              <img onclick="closeDialog(event)" src="./assets/icons/close.png">
+            </div>
             <div class="detailCardHead">
               <h5>${fristLetterUpperCase(dataArray[pokeIndex].name)}</h5>
             </div>

@@ -29,14 +29,32 @@
 }
 
 .detailCardHead {
-  text-align: center;
-  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.closingButton {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  cursor: pointer;
+}
+
+.closingButton img {
+  width: 30px;
+  height: 30px;
+  margin-right: 4px;
+}
+
+.closingButton img:hover {
+  filter: drop-shadow(0 0 10px var(--da-red));
 }
 
 .detailCardHead h5 {
   font-weight: 600;
   color: var(--cardText);
-  font-size: 28px;
+  font-size: 24px;
+  margin-bottom: 0;
 }
 
 .detailCardImg img {
@@ -199,7 +217,7 @@
 
 @media (max-width: 550px) {
   .pokemonDetailCard {
-    height: 580px;
+    height: 480px;
     width: 300px;
   }
 
@@ -219,14 +237,18 @@
   }
 
   .detailCardImg img {
-    width: 200px;
+    width: 180px;
   }
 
   .mainInfoCard {
     gap: 16px;
     padding-left: 18px;
-    padding-top: 40px;
+    padding-top: 24px;
     width: 300px;
+  }
+
+  .mainInfoRow {
+    margin-bottom: 0;
   }
 
   .mainInfo p {
@@ -244,7 +266,7 @@
   .stat {
     display: flex;
     flex-direction: column;
-    margin-top: 8px;
+    margin-top: 4px;
     padding-left: 8px;
   }
 
@@ -254,12 +276,12 @@
 
   .statBarContainer {
     width: 280px;
-    height: 12px;
+    height: 10px;
   }
 
   .statBar {
     width: 80%;
-    height: 12px;
+    height: 10px;
     background-color: #118ab2;
     border-radius: 10px;
   }
@@ -270,7 +292,7 @@
 
   .statLabelResp {
     display: inline;
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .evoChainContainer {
