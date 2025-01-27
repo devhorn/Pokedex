@@ -19,6 +19,7 @@
   --rock: #a2a4a7;
   --dragon: #6392a3;
   --cardText: #535252;
+  --ice: #75e3f7;
 }
 
 .fire {
@@ -75,4 +76,8 @@
 
 .dragon {
   background-color: var(--dragon);
+}
+
+.ice {
+  background-color: var(--ice);
 }

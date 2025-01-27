@@ -21,13 +21,17 @@ async function searchPokemons() {
     return;
   }
   searchResultArr = getSearchedPokemons(searchInput);
+  await getSearchDataAndEvoChain(searchResultArr);
+  renderSearchedPokemons();
+  document.getElementById("search").focus();
+  toggleSearchContent = false;
+}
+
+async function getSearchDataAndEvoChain(searchResultArr) {
   openLoadingOverlay();
   await getSearchedPokemonData(searchResultArr);
   await getSearchedEvolutionChains();
   closeLoadingOverlay();
-  renderSearchedPokemons();
-  document.getElementById("search").focus();
-  toggleSearchContent = false;
 }
 
 function getSearchedPokemons(searchInput) {
