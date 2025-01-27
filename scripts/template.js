@@ -93,6 +93,10 @@ function getEvoImgTemplate(url, name) {
           </div>`;
 }
 
+function getNoSearchResultTemplate() {
+  return `<h3 class="searchErrorMessage">Es wurden keine passenden Pokemons zu deiner Eingabe gefunden</h3>`;
+}
+
 function fristLetterUpperCase(word) {
   let firstLetter = word[0];
   let firstLetterCap = firstLetter.toUpperCase();

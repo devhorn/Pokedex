@@ -55,14 +55,22 @@ function renderSearchedPokemons() {
     toggleContent();
   }
   searchedContentRef.innerHTML = "";
-  for (let pokeIndex = 0; pokeIndex < searchedPokemonData.length; pokeIndex++) {
-    searchedContentRef.innerHTML += getPokemonCardTemplate(
-      pokeIndex,
-      searchedPokemonData,
-      "s"
-    );
+  if (searchedPokemonData.length == 0) {
+    searchedContentRef.innerHTML = getNoSearchResultTemplate();
+  } else {
+    for (
+      let pokeIndex = 0;
+      pokeIndex < searchedPokemonData.length;
+      pokeIndex++
+    ) {
+      searchedContentRef.innerHTML += getPokemonCardTemplate(
+        pokeIndex,
+        searchedPokemonData,
+        "s"
+      );
+    }
+    renderSearchedTypes();
   }
-  renderSearchedTypes();
 }
 
 function renderSearchedTypes() {

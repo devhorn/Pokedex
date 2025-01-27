@@ -53,3 +53,7 @@ main {
   max-width: 1440px !important;
   background-color: var(--main-bg-color);
 }
+
+.searchErrorMessage {
+  color: white;
+}
