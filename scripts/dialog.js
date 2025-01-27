@@ -4,6 +4,7 @@ function openDialog(pokeIndex, array) {
   document.getElementsByTagName("body")[0].style.overflow = "hidden";
   let arrayToUse = getNeededPokemonArr(array);
   let arrayToTrigger = getArrayToTrigger(array);
+  document.getElementById("search").disabled = true;
   renderDetailCard(pokeIndex, arrayToUse, arrayToTrigger);
 }
 
@@ -32,6 +33,7 @@ function closeDialog(event) {
   let closeDialogRef = document.getElementById("dialogContainer");
   closeDialogRef.classList.toggle("dNone");
   document.getElementsByTagName("body")[0].style.overflow = "auto";
+  document.getElementById("search").disabled = false;
   event.stopPropagation();
 }
 

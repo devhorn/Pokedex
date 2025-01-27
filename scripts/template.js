@@ -19,7 +19,7 @@ function getPokemonCardTemplate(pokeIndex, dataArray, arrayToTrigger) {
                   dataArray[pokeIndex].sprites.other.home.front_default
                 }" />
               </div>
-              <div id="typeContent${pokeIndex}" class="card-body d-flex gap-3 justify-content-center cardBody"></div>
+              <div id="typeContent${pokeIndex}" class="card-body d-flex justify-content-center cardBody"></div>
           </div>`;
 }
 
@@ -120,10 +120,3 @@ function fristLetterUpperCase(word) {
   let remainingLetters = word.slice(1);
   return (capitalizedWord = firstLetterCap + remainingLetters);
 }
-
-/* <div class="mainInfoValues">
-<p>${getHeight(pokeIndex, dataArray)}</p>
-<p>${getWeight(pokeIndex, dataArray)}</p>
-<p>${dataArray[pokeIndex].base_experience}</p>
-<p>${getAbilities(pokeIndex, dataArray)}</p>
-</div> */

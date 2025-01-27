@@ -21,9 +21,12 @@ header {
 }
 
 .headerContent {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   max-width: 1440px !important;
   padding: 0 !important;
+  margin: 0 auto;
 }
 
 .pokeballImg {
@@ -64,4 +67,26 @@ main {
 
 .searchErrorMessage {
   color: white;
+  text-align: center;
+}
+
+@media (max-width: 1450px) {
+  .headerContent {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
+
+@media (max-width: 630px) {
+  .headerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .searchInput {
+    padding-top: 0;
+    height: 40px !important;
+  }
 }

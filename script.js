@@ -65,6 +65,7 @@ function openLoadingOverlay() {
   loadingOverlayRef.classList.toggle("dNone");
   document.getElementsByTagName("body")[0].style.overflow = "hidden";
   document.getElementById("loadMoreButton").disabled = true;
+  document.getElementById("search").disabled = true;
 }
 
 function closeLoadingOverlay() {
@@ -72,6 +73,7 @@ function closeLoadingOverlay() {
   loadingOverlayRef.classList.toggle("dNone");
   document.getElementsByTagName("body")[0].style.overflow = "auto";
   document.getElementById("loadMoreButton").disabled = false;
+  document.getElementById("search").disabled = false;
 }
 
 async function getEvolutionChains() {

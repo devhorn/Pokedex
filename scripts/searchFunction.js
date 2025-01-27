@@ -7,7 +7,12 @@ function showInputWarning() {
     "Mindestens 3 Buchstaben eingeben...";
 }
 
+function clearInputWarning() {
+  document.getElementById("warning").innerHTML = "";
+}
+
 async function searchPokemons() {
+  clearInputWarning();
   evoChainSearchedPokemon = [];
   searchInputRef = document.getElementById("search");
   searchInput = searchInputRef.value;
@@ -15,13 +20,13 @@ async function searchPokemons() {
     showInputWarning();
     return;
   }
-  document.getElementById("warning").innerHTML = "";
   searchResultArr = getSearchedPokemons(searchInput);
   openLoadingOverlay();
   await getSearchedPokemonData(searchResultArr);
   await getSearchedEvolutionChains();
   closeLoadingOverlay();
   renderSearchedPokemons();
+  document.getElementById("search").focus();
   toggleSearchContent = false;
 }
 
@@ -83,12 +88,6 @@ function renderSearchedTypes() {
   }
 }
 
-function clearSearchWarningMessage() {
-  document.getElementById("warning").innerHTML = "";
-  let searchInputRef = document.getElementById("search");
-  searchInputRef.value = "";
-}
-
 function toggleContent() {
   document.getElementById("pokemonContent").innerHTML = "";
   document.getElementById("loadMoreButton").classList.toggle("dNone");
@@ -102,6 +101,9 @@ function backToOverview() {
   document.getElementById("searchedPokemonContent").classList.toggle("dNone");
   document.getElementById("loadMoreButton").classList.toggle("dNone");
   toggleSearchContent = true;
+  let searchInputRef = document.getElementById("search");
+  searchInputRef.value = "";
+  clearInputWarning();
   initialRenderingOfPokemons();
   renderTypes();
 }
@@ -148,4 +150,8 @@ async function buildEvoChainForSearchedPokemonDataArr(pokeIndex) {
   let evoChainImgUrls = await getEvoChainImgArr(evoChainNames);
   closeLoadingOverlay();
   renderEvoChain(pokeIndex, evoChainImgUrls, evoChainNames);
+}
+
+function clearSearchWarningMessage(id) {
+  document.getElementById(id).innerHTML = "";
 }
