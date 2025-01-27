@@ -1,4 +1,4 @@
-BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=1302&offset=0";
+URL = "https://pokeapi.co/api/v2/pokemon?limit=1302&offset=0";
 let amountOfRendertPokemons = 20;
 let amountOfLoad = 20;
 let loadedPokemons = [];
@@ -18,7 +18,7 @@ async function init() {
 async function initialLoadPokemons() {
   let pokemonContentRef = document.getElementById("pokemonContent");
   try {
-    let response = await fetch(BASE_URL);
+    let response = await fetch(URL);
     let responseAsJson = await response.json();
     loadedPokemons = responseAsJson.results;
   } catch (error) {
